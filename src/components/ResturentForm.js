@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 
-const ResturentForm = () => {
+import "./OrderList.css";
+
+const RestaurantForm = ({ addOrder }) => {
   const [orderId, setOrderId] = useState("");
   const [price, setPrice] = useState("");
   const [dish, setDish] = useState("");
-  const [table, setTable] = useState("");
+  const [table, setTable] = useState("table1");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!orderId || !price || !dish) return;
+    if (!orderId || !price || !dish || !table) return;
 
     const order = {
       id: orderId,
@@ -16,6 +18,9 @@ const ResturentForm = () => {
       dish,
       table,
     };
+    console.log(order);
+
+    addOrder(order);
 
     setOrderId("");
     setPrice("");
@@ -25,7 +30,7 @@ const ResturentForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <label for="id">Unique Order Id:</label>
+        <label htmlFor="id">Unique Order Id:</label>
         <input
           type="number"
           name="id"
@@ -34,7 +39,7 @@ const ResturentForm = () => {
           onChange={(e) => setOrderId(e.target.value)}
         />
         <br />
-        <label for="price">Choose Price:</label>
+        <label htmlFor="price">Choose Price:</label>
         <input
           type="number"
           name="price"
@@ -43,7 +48,7 @@ const ResturentForm = () => {
           onChange={(e) => setPrice(e.target.value)}
         />
         <br />
-        <label for="dish"> Choose Dish:</label>
+        <label htmlFor="dish"> Choose Dish:</label>
         <input
           type="text"
           name="dish"
@@ -53,16 +58,16 @@ const ResturentForm = () => {
         />
         <br />
 
-        <label for="table">Choose a table:</label>
+        <label htmlFor="table">Choose a table:</label>
         <select
           name="table"
           placeholder="choose a table"
           value={table}
           onChange={(e) => setTable(e.target.value)}
         >
-          <option value="table1">table1</option>
-          <option value="table2">table2</option>
-          <option value="table3">table3</option>
+          <option value="table1">Table 1</option>
+          <option value="table2">Table 2</option>
+          <option value="table3">table 3</option>
         </select>
         <button type="submit">Add Order</button>
       </form>
@@ -70,4 +75,4 @@ const ResturentForm = () => {
   );
 };
 
-export default ResturentForm;
+export default RestaurantForm;

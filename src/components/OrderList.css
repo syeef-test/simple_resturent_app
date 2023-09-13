@@ -1,0 +1,13 @@
+/* Add this CSS to your stylesheet */
+.center-table {
+    margin: 0 auto;
+    /* Center the table horizontally */
+    text-align: center;
+    /* Center the table content horizontally */
+}
+
+.center-table th,
+.center-table td {
+    padding: 8px;
+    /* Add padding for better spacing */
+}
